@@ -212,6 +212,21 @@ body {
   cursor: pointer;
 }
 
+.radio_button:hover {
+  background: #000;
+  color: white;
+}
+
+.input_button:hover {
+  background: white;
+  color: black;
+}
+
+.bg {
+  background: #000;
+  color: white;
+}
+
 .radio_button.input {
   width: 100%;
 }
@@ -305,6 +320,8 @@ body {
 
   .container_left {
     padding: 10px 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   .container_right {

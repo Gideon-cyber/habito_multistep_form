@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Get a House</title>
     <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+      integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <main class="container">
@@ -38,23 +43,13 @@
               start by letting us know a little bit about what you need
             </p>
             <div class="radio_buttons">
-              <div class="radio_button">
-                <input
-                  type="radio"
-                  name="yourNeed"
-                  oninput="validate(this)"
-                  value="remotgage"
-                />
-                <label>I want a remotgage</label>
+              <div class="radio_button" onclick="handleClick(this)">
+                <input type="radio" name="yourNeed" value="remotgage" />
+                I want a remotgage
               </div>
-              <div class="radio_button">
-                <input
-                  type="radio"
-                  name="yourNeed"
-                  oninput="validate(this)"
-                  value="buyHome"
-                />
-                <label>I want to buy a home</label>
+              <div class="radio_button" onclick="handleClick(this)">
+                <input type="radio" name="yourNeed" value="buyHome" />
+                I want to buy a home
               </div>
             </div>
           </div>
@@ -67,41 +62,33 @@
               This will help us get you to the right expert
             </p>
             <div class="radio_buttons">
-              <div class="radio_button">
+              <div class="radio_button" onclick="handleClick(this)">
                 <input
                   type="radio"
                   name="liveInProperty"
-                  oninput="validate(this)"
                   value="alreadyEnded"
                 />
-                <label>It's already ended</label>
+                It's already ended
               </div>
-              <div class="radio_button">
+              <div class="radio_button" onclick="handleClick(this)">
                 <input
                   type="radio"
                   name="liveInProperty"
-                  oninput="validate(this)"
                   value="outIn6Months"
                 />
-                <label>I let it out in the next 6 months</label>
+                I let it out in the next 6 months
               </div>
-              <div class="radio_button">
+              <div class="radio_button" onclick="handleClick(this)">
                 <input
                   type="radio"
                   name="liveInProperty"
-                  oninput="validate(this)"
                   value="outInMoreThan6Months"
                 />
-                <label>In more than 6 months</label>
+                In more than 6 months
               </div>
-              <div class="radio_button">
-                <input
-                  type="radio"
-                  name="liveInProperty"
-                  oninput="validate(this)"
-                  value="notSure"
-                />
-                <label>I'm not sure</label>
+              <div class="radio_button" onclick="handleClick(this)">
+                <input type="radio" name="liveInProperty" value="notSure" />
+                I'm not sure
               </div>
             </div>
           </div>
@@ -110,7 +97,7 @@
             <h2 class="step-heading">Great let's find you a better deal</h2>
 
             <div class="radio_buttons">
-              <div class="radio_button">
+              <div class="radio_button input_button">
                 <input
                   type="text"
                   name="name"
@@ -119,7 +106,7 @@
                   class="inputFields"
                 />
               </div>
-              <div class="radio_button">
+              <div class="radio_button input_button">
                 <input
                   type="email"
                   name="email"
@@ -128,7 +115,7 @@
                   class="inputFields"
                 />
               </div>
-              <div class="radio_button input">
+              <div class="radio_button input input_button">
                 <input
                   type="tel"
                   name="number"
@@ -179,6 +166,8 @@
         </div>
       </section>
     </main>
+    <!-- jsPDF library -->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script>
       const step1 = document.getElementById("step1");
       const step2 = document.getElementById("step2");
@@ -274,6 +263,15 @@
         registrationData["liveInProperty"] = liveInPropertyValue;
         registrationData["userInputs"] = userInputs;
 
+        var doc = new jsPDF();
+
+        doc.text(`your need: ${yourNeedValue}`, 10, 10);
+        doc.text(`live in property: ${liveInPropertyValue}`, 10, 20);
+        doc.text(`name: ${userInputs[0]}`, 10, 30);
+        doc.text(`email: ${userInputs[1]}`, 10, 40);
+        doc.text(`number: ${userInputs[2]}`, 10, 50);
+        doc.save("newReg.pdf");
+
         console.log(registrationData);
       });
 
@@ -282,6 +280,43 @@
         topContainer.classList.toggle("hidden");
         bottomContainer.classList.toggle("hidden");
       });
+
+      const radioButton = document.querySelectorAll(".radio_button");
+
+      const handleSelected = () => {
+        for (let i = 0; i < radioButton.length; i++) {
+          let input = radioButton[i].firstElementChild;
+          if (input.checked === true) {
+            radioButton[i].style.backgroundColor = "#000";
+            radioButton[i].style.color = "#fff";
+            break;
+          } else {
+            return;
+          }
+        }
+      };
+
+      const handleClick = (button) => {
+        let child = button.firstElementChild;
+        if (child.checked) {
+          // button.classList.toggle("bg");
+
+          setTimeout(() => {
+            validate(child);
+          }, 1500);
+        } else {
+          child.checked = true;
+          for (let i = 0; i < radioButton.length; i++) {
+            if (radioButton[i].classList.contains("bg")) {
+              radioButton[i].classList.remove("bg");
+            }
+          }
+          button.classList.toggle("bg");
+          setTimeout(() => {
+            validate(child);
+          }, 1500);
+        }
+      };
     </script>
     <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
   </body>

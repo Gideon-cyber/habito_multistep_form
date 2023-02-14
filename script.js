@@ -1,8 +1,7 @@
 const step1 = document.getElementById("step1");
 const step2 = document.getElementById("step2");
 const step3 = document.getElementById("step3");
-const step4 = document.getElementById("step4");
-const step5 = document.getElementById("step5");
+
 const progress = document.querySelector(".steps_progress");
 const count = document.querySelector(".first-number");
 const steps = document.querySelectorAll(".steps");
