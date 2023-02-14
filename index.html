@@ -198,7 +198,7 @@
       function showStep(step) {
         // Hide all steps
         for (let i = 0; i < steps.length; i++) {
-          steps[i].style.left = "800px";
+          steps[i].style.left = "1500px";
         }
         // Show the current step
         steps[step - 1].style.left = "0px";
@@ -208,7 +208,7 @@
 
       showStep(currentStep);
       function nextStep(step) {
-        steps[step - 1].style.left = "-800px";
+        steps[step - 1].style.left = "-1500px";
         steps[step].style.left = "0px";
         progress.style.width = `${((step + 1) / steps.length) * 100}%`;
         count.innerHTML = step + 1;
@@ -217,7 +217,7 @@
       }
 
       function prevStep(step) {
-        steps[step - 1].style.left = "800px";
+        steps[step - 1].style.left = "1500px";
         steps[step - 2].style.left = "0px";
         progress.style.width = `${((step - 1) / steps.length) * 100}%`;
         count.innerHTML = step - 1;
