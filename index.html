@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get a House</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- Left side -->
+      <section class="container_left gradient_bg_g">
+        <h1 class="container_left_logo"></h1>
+
+        <form id="multi-step-form">
+          <!-- Multistep Form -->
+          <span class="go_back">
+            <iconify-icon icon="material-symbols:arrow-back"></iconify-icon>
+            <span>Go Back</span>
+          </span>
+          <!-- Steps-->
+          <div class="steps_container">
+            <div class="steps_numbers">
+              <span class="first-number">1</span>
+              of
+              <span class="second-number">3</span>
+            </div>
+            <!--Progress bar-->
+            <div class="steps_bar">
+              <div class="steps_progress"></div>
+            </div>
+          </div>
+          <div class="steps" id="step1">
+            <!-- Fields for step 1 go here -->
+            <h2 class="step-heading">How can we help?</h2>
+            <p class="step-paragraph">
+              start by letting us know a little bit about what you need
+            </p>
+            <div class="radio_buttons">
+              <div class="radio_button">
+                <input
+                  type="radio"
+                  name="yourNeed"
+                  oninput="validate(this)"
+                  value="remotgage"
+                />
+                <label>I want a remotgage</label>
+              </div>
+              <div class="radio_button">
+                <input
+                  type="radio"
+                  name="yourNeed"
+                  oninput="validate(this)"
+                  value="buyHome"
+                />
+                <label>I want to buy a home</label>
+              </div>
+            </div>
+          </div>
+          <div class="steps" id="step2">
+            <!-- Fields for step 2 go here -->
+            <h2 class="step-heading">
+              Do you live in this property,or let it out?
+            </h2>
+            <p class="step-paragraph">
+              This will help us get you to the right expert
+            </p>
+            <div class="radio_buttons">
+              <div class="radio_button">
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  oninput="validate(this)"
+                  value="alreadyEnded"
+                />
+                <label>It's already ended</label>
+              </div>
+              <div class="radio_button">
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  oninput="validate(this)"
+                  value="outIn6Months"
+                />
+                <label>I let it out in the next 6 months</label>
+              </div>
+              <div class="radio_button">
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  oninput="validate(this)"
+                  value="outInMoreThan6Months"
+                />
+                <label>In more than 6 months</label>
+              </div>
+              <div class="radio_button">
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  oninput="validate(this)"
+                  value="notSure"
+                />
+                <label>I'm not sure</label>
+              </div>
+            </div>
+          </div>
+          <div class="steps" id="step3">
+            <!-- Fields for step 3 go here -->
+            <h2 class="step-heading">Great let's find you a better deal</h2>
+
+            <div class="radio_buttons">
+              <div class="radio_button">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your name"
+                  class="inputFields"
+                />
+              </div>
+              <div class="radio_button">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  class="inputFields"
+                />
+              </div>
+              <div class="radio_button input">
+                <input
+                  type="tel"
+                  name="number"
+                  id="number"
+                  placeholder="Enter your phone number"
+                  class="inputFields"
+                />
+              </div>
+              <button class="radio_button submit_button" type="submit">
+                <span>Submit</span>
+                <iconify-icon icon="carbon:arrow-right"></iconify-icon>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right side -->
+      <section class="container_right gradient_bg hidden">
+        <div class="container_right_box">
+          <div class="container_nav">
+            <iconify-icon icon="ic:sharp-keyboard-arrow-down"></iconify-icon>
+          </div>
+          <div class="container_right_box_top hidden">
+            <p>
+              We sometimes have access to <span>exclusive deals</span> you
+              wouldn’t be able to get directly, including from your current
+              lender
+            </p>
+          </div>
+          <div class="container_right_box_bottom hidden">
+            <img
+              decoding="async"
+              width="200"
+              height="36"
+              src="https://palmpromotions.com.au/wp-content/uploads/2023/02/Screenshot-2023-02-09-at-10.58.13-pm.png"
+              class="attachment-medium_large size-medium_large wp-image-329"
+              alt=""
+              loading="lazy"
+              srcset="
+                https://palmpromotions.com.au/wp-content/uploads/2023/02/Screenshot-2023-02-09-at-10.58.13-pm.png        424w,
+                https://palmpromotions.com.au/wp-content/uploads/2023/02/Screenshot-2023-02-09-at-10.58.13-pm-300x40.png 300w
+              "
+              sizes="(max-width: 424px) 100vw, 424px"
+            />
+            <p class="">Rated Excellent based on over 7,000 customer reviews</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+  </body>
+</html>
