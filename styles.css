@@ -217,6 +217,11 @@ body {
   color: white;
 }
 
+.input_button {
+  background: white;
+  color: black;
+}
+
 .input_button:hover {
   background: white;
   color: black;
@@ -280,6 +285,11 @@ body {
   border: 2px solid black;
   border-radius: 20px;
   transition: all 0.5s;
+}
+
+.inputFields {
+  background: #fff;
+  color: black;
 }
 
 .form-step {
@@ -401,10 +411,6 @@ body {
   .gradient_bg {
     background: #fff;
     /* display: none; */
-  }
-
-  .inputFields {
-    background: transparent;
   }
 
   .container_nav {

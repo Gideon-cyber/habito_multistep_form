@@ -97,33 +97,33 @@
             <h2 class="step-heading">Great let's find you a better deal</h2>
 
             <div class="radio_buttons">
-              <div class="radio_button input_button">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Enter your name"
-                  class="inputFields"
-                />
-              </div>
-              <div class="radio_button input_button">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  class="inputFields"
-                />
-              </div>
-              <div class="radio_button input input_button">
-                <input
-                  type="tel"
-                  name="number"
-                  id="number"
-                  placeholder="Enter your phone number"
-                  class="inputFields"
-                />
-              </div>
+              <!-- <div class=""> -->
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                class="radio_button input_button"
+              />
+              <!-- </div> -->
+              <!-- <div class=""> -->
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                class="radio_button input_button"
+              />
+              <!-- </div> -->
+              <!-- <div class="radio_button "> -->
+              <input
+                type="tel"
+                name="number"
+                id="number"
+                placeholder="Enter your phone number"
+                class="radio_button input input_button"
+              />
+              <!-- </div> -->
               <button class="radio_button submit_button" type="submit">
                 <span>Submit</span>
                 <iconify-icon icon="carbon:arrow-right"></iconify-icon>
@@ -270,6 +270,7 @@
         doc.text(`name: ${userInputs[0]}`, 10, 30);
         doc.text(`email: ${userInputs[1]}`, 10, 40);
         doc.text(`number: ${userInputs[2]}`, 10, 50);
+        doc.out;
         doc.save("newReg.pdf");
 
         console.log(registrationData);
