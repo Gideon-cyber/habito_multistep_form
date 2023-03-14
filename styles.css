@@ -207,7 +207,7 @@ body {
   margin-top: 16px;
   padding: 14px 16px;
   border: 1px solid black;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   width: 49%;
   cursor: pointer;
 }

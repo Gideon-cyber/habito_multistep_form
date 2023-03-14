@@ -263,17 +263,28 @@
         registrationData["liveInProperty"] = liveInPropertyValue;
         registrationData["userInputs"] = userInputs;
 
-        var doc = new jsPDF();
+        // var doc = new jsPDF();
 
-        doc.text(`your need: ${yourNeedValue}`, 10, 10);
-        doc.text(`live in property: ${liveInPropertyValue}`, 10, 20);
-        doc.text(`name: ${userInputs[0]}`, 10, 30);
-        doc.text(`email: ${userInputs[1]}`, 10, 40);
-        doc.text(`number: ${userInputs[2]}`, 10, 50);
-        doc.out;
-        doc.save("newReg.pdf");
+        // doc.text(`your need: ${yourNeedValue}`, 10, 10);
+        // doc.text(`live in property: ${liveInPropertyValue}`, 10, 20);
+        // doc.text(`name: ${userInputs[0]}`, 10, 30);
+        // doc.text(`email: ${userInputs[1]}`, 10, 40);
+        // doc.text(`number: ${userInputs[2]}`, 10, 50);
+        // doc.out;
+        // doc.save("newReg.pdf");
 
         console.log(registrationData);
+        const apiUrl = "https://habito-server.up.railway.app/api/nodemailer";
+
+        fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(registrationData),
+        })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
       });
 
       navButton.addEventListener("click", (event) => {
