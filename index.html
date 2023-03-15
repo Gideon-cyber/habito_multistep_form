@@ -165,6 +165,17 @@
           </div>
         </div>
       </section>
+
+      <!-- Modal -->
+      <section class="modal" onclick="{handleModalClick}">
+        <div class="modal__container">
+          <img
+            src="https://res.cloudinary.com/depqqbyyn/image/upload/v1678918489/success_dpmliz.png"
+            alt="success"
+          />
+          <p>Successful Registration</p>
+        </div>
+      </section>
     </main>
     <!-- jsPDF library -->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
@@ -275,6 +286,7 @@
 
         console.log(registrationData);
         const apiUrl = "https://habito-server.up.railway.app/api/nodemailer";
+        // const apiUrl = "http://localhost:5000/api/nodemailer";
 
         fetch(apiUrl, {
           method: "POST",
@@ -283,9 +295,20 @@
           },
           body: JSON.stringify(registrationData),
         })
-          .then((res) => console.log(res))
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              document.querySelector(".modal").style.display = "flex";
+            }
+          })
           .catch((err) => console.log(err));
       });
+      const modal = document.querySelector(".modal");
+      const handleModalClick = (event) => {
+        modal.style.display = "none";
+        // window.location.reload();
+      };
+      modal.addEventListener("click", handleModalClick);
 
       navButton.addEventListener("click", (event) => {
         rightSection.classList.toggle("hidden");
