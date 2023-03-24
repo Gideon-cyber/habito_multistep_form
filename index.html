@@ -242,7 +242,11 @@
       };
 
       back.addEventListener("click", (event) => {
-        prevStep(currentStep);
+        if (currentStep < 2) {
+          window.location.href = "https://www.google.com";
+        } else {
+          prevStep(currentStep);
+        }
       });
 
       form.addEventListener("submit", (event) => {
