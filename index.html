@@ -344,20 +344,20 @@
         const apiUrl = "https://habito-server.up.railway.app/api/nodemailer";
         // const apiUrl = "http://localhost:5000/api/nodemailer";
 
-        // fetch(apiUrl, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(registrationData),
-        // })
-        //   .then((res) => {
-        //     console.log(res);
-        //     if (res.status === 200) {
-        //       document.querySelector(".modal").style.display = "flex";
-        //     }
-        //   })
-        //   .catch((err) => console.log(err));
+        fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(registrationData),
+        })
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              document.querySelector(".modal").style.display = "flex";
+            }
+          })
+          .catch((err) => console.log(err));
       });
       const modal = document.querySelector(".modal");
       const handleModalClick = (event) => {
