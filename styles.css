@@ -131,7 +131,8 @@ body {
     rgba(0, 255, 144, 1) 94%,
     rgba(128, 255, 0, 1) 100%
   ); */
-  background-color: #a4d6ff;
+  /* background-color: #a4d6ff; */
+  background: linear-gradient(180deg, #c2bcf5 70%, #a4d6ff 100%);
 }
 
 /* #multi-step-form div:not(:first-child) {
@@ -182,7 +183,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 50px;
 }
 
@@ -207,7 +208,7 @@ body {
 .radio_button {
   margin-top: 16px;
   padding: 14px 16px;
-  border: 1px solid #0a2243;
+  border: 2px solid #0a2243;
   background: #60e1ff;
   /* border-radius: 8px; */
   width: 49%;
@@ -216,7 +217,7 @@ body {
 
 .radio_button:hover {
   background: #0a2243;
-  color: white;
+  color: #60e1ff;
 }
 
 .input_button {
@@ -231,7 +232,8 @@ body {
 
 .bg {
   background: #0a2243;
-  color: white;
+  color: #60e1ff;
+  font-weight: 600;
 }
 
 .radio_button.input {
@@ -244,15 +246,15 @@ body {
   justify-content: center;
   font-family: poppins;
   gap: 10px;
-  background: #0a2243;
-  color: white;
+  background: #60e1ff;
+  color: #0a2243;
+  border: 2px solid #0a2243;
   margin: 0 auto;
 }
 
 .submit_button:hover {
-  background: #fff;
-  color: #000;
-  border: 1px solid #000;
+  background: #0a2243;
+  color: #60e1ff;
 }
 
 .inputFields {

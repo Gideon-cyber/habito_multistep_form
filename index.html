@@ -38,43 +38,61 @@
           </div>
           <div class="steps" id="step1">
             <!-- Fields for step 1 go here -->
-            <h2 class="step-heading">How can we help?</h2>
-            <p class="step-paragraph">
+            <h2 class="step-heading">Will you live in this property?</h2>
+            <!-- <p class="step-paragraph">
               start by letting us know a little bit about what you need
-            </p>
+            </p> -->
             <div class="radio_buttons">
               <div class="radio_button" onclick="handleClick(this)">
-                <input type="radio" name="yourNeed" value="remotgage" />
-                I want a remotgage
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  value="yes"
+                  style="display: none"
+                />
+                Yes
               </div>
               <div class="radio_button" onclick="handleClick(this)">
-                <input type="radio" name="yourNeed" value="buyHome" />
-                I want to buy a home
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  value="no"
+                  style="display: none"
+                />
+                No
               </div>
             </div>
           </div>
           <div class="steps" id="step2">
             <!-- Fields for step 2 go here -->
-            <h2 class="step-heading">
-              Do you live in this property,or let it out?
-            </h2>
-            <p class="step-paragraph">
+            <h2 class="step-heading">What is your current Property value?</h2>
+            <!-- <p class="step-paragraph">
               This will help us get you to the right expert
-            </p>
+            </p> -->
             <div class="radio_buttons">
-              <div class="radio_button" onclick="handleClick(this)">
+              <input
+                type="text"
+                name="propertyValue"
+                id="propertyValue"
+                placeholder="Enter current property value"
+                onblur="handleBlur(this)"
+                class="radio_button input input_button"
+              />
+              <!-- <div class="radio_button" onclick="handleClick(this)">
                 <input
-                  type="radio"
-                  name="liveInProperty"
+                  type="text"
+                  name="propertyValue"
                   value="alreadyEnded"
+                  style="display: none"
                 />
                 It's already ended
-              </div>
-              <div class="radio_button" onclick="handleClick(this)">
+              </div> -->
+              <!-- <div class="radio_button" onclick="handleClick(this)">
                 <input
                   type="radio"
                   name="liveInProperty"
                   value="outIn6Months"
+                  style="display: none"
                 />
                 I let it out in the next 6 months
               </div>
@@ -83,13 +101,19 @@
                   type="radio"
                   name="liveInProperty"
                   value="outInMoreThan6Months"
+                  style="display: none"
                 />
                 In more than 6 months
               </div>
               <div class="radio_button" onclick="handleClick(this)">
-                <input type="radio" name="liveInProperty" value="notSure" />
+                <input
+                  type="radio"
+                  name="liveInProperty"
+                  value="notSure"
+                  style="display: none"
+                />
                 I'm not sure
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="steps" id="step3">
@@ -116,12 +140,29 @@
               />
               <!-- </div> -->
               <!-- <div class="radio_button "> -->
+
+              <select id="mySelect" class="radio_button input_button">
+                <option value="">Select a state</option>
+                <option value="victoria">Victoria</option>
+                <option value="new south wales">New South Wales</option>
+                <option value="queenIsland">QueeenIsland</option>
+                <option value="tasmania">Tasmania</option>
+                <option value="western australia">Western Australia</option>
+                <option value="south autstralia">South Australia</option>
+                <option value="australia capital territory">
+                  Australia Capital Territory
+                </option>
+                <option value="northern territories">
+                  Northern Territories
+                </option>
+              </select>
+
               <input
                 type="tel"
                 name="number"
                 id="number"
                 placeholder="Enter your phone number"
-                class="radio_button input input_button"
+                class="radio_button input_button"
               />
               <!-- </div> -->
               <button class="radio_button submit_button" type="submit">
@@ -195,6 +236,11 @@
       const userName = document.querySelector("#name");
       const userEmail = document.querySelector("#email");
       const userNumber = document.querySelector("#number");
+      const propertyValue = document.querySelector("#propertyValue");
+      const selectElement = document.getElementById("mySelect");
+
+      // Get the selected option value
+      const selectedValue = selectElement.value;
 
       let registrationData = {}; // object to store all user inputs
 
@@ -251,16 +297,16 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const yourNeedInputs = document.querySelectorAll(
-          'input[name="yourNeed"]'
-        );
-        let yourNeedValue;
-        for (let i = 0; i < yourNeedInputs.length; i++) {
-          if (yourNeedInputs[i].checked) {
-            yourNeedValue = yourNeedInputs[i].value;
-            break;
-          }
-        }
+        // const yourNeedInputs = document.querySelectorAll(
+        //   'input[name="yourNeed"]'
+        // );
+        // let yourNeedValue;
+        // for (let i = 0; i < yourNeedInputs.length; i++) {
+        //   if (yourNeedInputs[i].checked) {
+        //     yourNeedValue = yourNeedInputs[i].value;
+        //     break;
+        //   }
+        // }
         const liveInPropertyInputs = document.querySelectorAll(
           'input[name="liveInProperty"]'
         );
@@ -272,10 +318,16 @@
           }
         }
 
-        userInputs.push(userName.value, userEmail.value, userNumber.value);
+        userInputs.push(
+          userName.value,
+          userEmail.value,
+          userNumber.value,
+          selectElement.value
+        );
 
-        registrationData["yourNeed"] = yourNeedValue;
+        // registrationData["yourNeed"] = yourNeedValue;
         registrationData["liveInProperty"] = liveInPropertyValue;
+        registrationData["propertyValue"] = propertyValue.value;
         registrationData["userInputs"] = userInputs;
 
         // var doc = new jsPDF();
@@ -292,20 +344,20 @@
         const apiUrl = "https://habito-server.up.railway.app/api/nodemailer";
         // const apiUrl = "http://localhost:5000/api/nodemailer";
 
-        fetch(apiUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(registrationData),
-        })
-          .then((res) => {
-            console.log(res);
-            if (res.status === 200) {
-              document.querySelector(".modal").style.display = "flex";
-            }
-          })
-          .catch((err) => console.log(err));
+        // fetch(apiUrl, {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify(registrationData),
+        // })
+        //   .then((res) => {
+        //     console.log(res);
+        //     if (res.status === 200) {
+        //       document.querySelector(".modal").style.display = "flex";
+        //     }
+        //   })
+        //   .catch((err) => console.log(err));
       });
       const modal = document.querySelector(".modal");
       const handleModalClick = (event) => {
@@ -347,14 +399,22 @@
           child.checked = true;
           for (let i = 0; i < radioButton.length; i++) {
             if (radioButton[i].classList.contains("bg")) {
-              radioButton[i].classList.remove("bg");
+              if (radioButton[i].firstElementChild.checked) {
+                radioButton[i].classList.add("bg");
+              } else {
+                radioButton[i].classList.remove("bg");
+              }
             }
           }
-          button.classList.toggle("bg");
+          button.classList.add("bg");
           setTimeout(() => {
             validate(child);
           }, 1500);
         }
+      };
+
+      const handleBlur = (input) => {
+        validate(input);
       };
     </script>
     <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
